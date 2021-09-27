@@ -3,4 +3,5 @@
     <string name="btn_norris_facts_text">Chuck Norris facts</string>
     <string name="btn_dad_jokes_text">Dad jokes</string>
     <string name="landing_fragment_title">Home</string>
+    <string name="loading_text">Loading</string>
 </resources>

@@ -7,5 +7,16 @@
     <fragment
         android:id="@+id/landingFragment"
         android:name="com.anurbanv.norrisfactsndadjokesapp.ui.landing.LandingFragment"
-        android:label="@string/landing_fragment_title" />
+        android:label="@string/landing_fragment_title">
+        <action
+            android:id="@+id/showRequestFragment"
+            app:destination="@id/requestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.anurbanv.norrisfactsndadjokesapp.ui.request.RequestFragment">
+        <argument
+            android:name="requestType"
+            app:argType="com.anurbanv.norrisfactsndadjokesapp.ui.request.RequestType" />
+    </fragment>
 </navigation>
