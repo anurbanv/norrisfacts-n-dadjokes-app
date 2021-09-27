@@ -4,4 +4,8 @@
     <string name="btn_dad_jokes_text">Dad jokes</string>
     <string name="landing_fragment_title">Home</string>
     <string name="loading_text">Loading</string>
+    <string name="btn_request_text_norris">get chuck norris fact</string>
+    <string name="btn_request_text_dad">get dad joke</string>
+    <string name="title_chuck_norris">Chuck Norris Fact</string>
+    <string name="title_dad_joke">Dad Joke</string>
 </resources>

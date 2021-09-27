@@ -16,7 +16,9 @@
         android:id="@+id/loadingGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="pbLoading, tvLoading" />
+        android:visibility="gone"
+        app:constraint_referenced_ids="pbLoading, tvLoading"
+        tools:visibility="visible" />
 
     <ProgressBar
         android:id="@+id/pbLoading"
@@ -50,17 +52,28 @@
 
     <TextView
         android:id="@+id/tvResultText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
         android:textSize="30sp"
+        android:gravity="center_horizontal"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRequest"
         tools:text="Example text"
         tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/btnRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="get dad joke" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.anurbanv.norrisfactsndadjokesapp.R
 import com.anurbanv.norrisfactsndadjokesapp.databinding.FragmentRequestBinding
-import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class RequestFragment : Fragment() {
 
@@ -31,19 +30,22 @@ class RequestFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifecycleScope.launch {
-            if (viewModel.isResultEmpty()) {
-                viewModel.requestApi()
+        when (args.requestType) {
+            RequestType.NORRIS_FACT -> {
+                updateTitle(getString(R.string.title_chuck_norris))
+                updateButtonText(getString(R.string.btn_request_text_norris))
             }
-
-            withContext(Main) {
-                viewModel.getResultString().observe(viewLifecycleOwner, { updateResultString(it) })
+            RequestType.DAD_JOKE -> {
+                updateTitle(getString(R.string.title_dad_joke))
+                updateButtonText(getString(R.string.btn_request_text_dad))
             }
         }
 
-        when (args.requestType) {
-            RequestType.NORRIS_FACT -> updateTitle("Fact")
-            RequestType.DAD_JOKE -> updateTitle("Joke")
+        viewModel.getResultString().observe(viewLifecycleOwner, { updateResultString(it) })
+
+        binding.btnRequest.setOnClickListener {
+            updateLoadingVisibility(true)
+            lifecycleScope.launch { viewModel.requestApi() }
         }
     }
 
@@ -51,8 +53,16 @@ class RequestFragment : Fragment() {
         (activity as? AppCompatActivity)?.supportActionBar?.title = title
     }
 
+    private fun updateButtonText(text: String) {
+        binding.btnRequest.text = text
+    }
+
+    private fun updateLoadingVisibility(isVisible: Boolean) {
+        binding.loadingGroup.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+
     private fun updateResultString(result: String) {
-        binding.loadingGroup.visibility = View.GONE
+        updateLoadingVisibility(false)
         with(binding.tvResultText) {
             visibility = View.VISIBLE
             text = result

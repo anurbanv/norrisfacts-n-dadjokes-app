@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class NorrisFact(
     @SerializedName("value")
-    val content: String
-)
+    override val content: String
+) : TextContentObject
