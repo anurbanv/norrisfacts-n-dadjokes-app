@@ -32,7 +32,9 @@ class RequestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launch {
-            viewModel.requestApi()
+            if (viewModel.isResultEmpty()) {
+                viewModel.requestApi()
+            }
 
             withContext(Main) {
                 viewModel.getResultString().observe(viewLifecycleOwner, { updateResultString(it) })
