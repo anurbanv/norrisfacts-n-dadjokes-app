@@ -43,6 +43,8 @@ class RequestFragment : Fragment() {
 
         viewModel.getResultString().observe(viewLifecycleOwner, { updateResultString(it) })
 
+        viewModel.getErrorString().observe(viewLifecycleOwner, { updateErrorString(it) })
+
         binding.btnRequest.setOnClickListener {
             updateLoadingVisibility(true)
             lifecycleScope.launch { viewModel.requestApi() }
@@ -67,5 +69,15 @@ class RequestFragment : Fragment() {
             visibility = View.VISIBLE
             text = result
         }
+    }
+
+    private fun updateErrorString(error: String) {
+        updateLoadingVisibility(false)
+
+        val errorEmpty = error.isNotBlank()
+
+        binding.tvResultText.visibility = if (errorEmpty) View.GONE else View.VISIBLE
+        binding.tvErrorText.visibility = if (errorEmpty) View.VISIBLE else View.GONE
+        binding.tvErrorText.text = error
     }
 }

@@ -55,8 +55,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:textSize="30sp"
         android:gravity="center_horizontal"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,6 +64,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnRequest"
         tools:text="Example text"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvErrorText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/red"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnRequest"
+        tools:text="Error text"
         tools:visibility="visible" />
 
     <Button

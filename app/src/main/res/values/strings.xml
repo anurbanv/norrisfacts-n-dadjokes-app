@@ -8,4 +8,6 @@
     <string name="btn_request_text_dad">get dad joke</string>
     <string name="title_chuck_norris">Chuck Norris Fact</string>
     <string name="title_dad_joke">Dad Joke</string>
+    <string name="error_norris_fact">Failed to retrieve Chuck Norris fact</string>
+    <string name="error_dad_joke">Failed to retrieve Dad Joke</string>
 </resources>
